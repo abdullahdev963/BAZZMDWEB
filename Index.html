@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAZZ MD BOT — Pairing</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Cinzel:wght@500;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #000; color: #fff; font-family: 'Rajdhani', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; position: relative; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(circle at 20% 20%, rgba(0,255,255,0.08), transparent 45%), radial-gradient(circle at 80% 80%, rgba(255,0,200,0.08), transparent 45%); pointer-events: none; z-index: 0; animation: breathe 8s infinite; }
+  @keyframes breathe { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+  .box { position: relative; z-index: 1; border: 1px solid rgba(0,255,255,0.2); padding: 48px 36px 40px; max-width: 460px; width: 100%; background: rgba(5,5,8,0.85); backdrop-filter: blur(20px); border-radius: 16px; box-shadow: 0 0 40px rgba(0,255,255,0.1), 0 0 80px rgba(120,0,255,0.08); }
+  .box::before, .box::after { content: ''; position: absolute; width: 28px; height: 28px; border: 2px solid #0ff; filter: drop-shadow(0 0 8px #0ff); }
+  .box::before { top: -1px; left: -1px; border-right: none; border-bottom: none; border-top-left-radius: 16px; }
+  .box::after { bottom: -1px; right: -1px; border-left: none; border-top: none; border-bottom-right-radius: 16px; }
+  h1 { font-family: 'Orbitron'; font-size: 20px; font-weight: 900; letter-spacing: 8px; text-align: center; background: linear-gradient(90deg, #0ff, #fff, #f0f); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 6px; }
+  .sub { font-family: 'Cinzel'; color: #666; font-size: 11px; letter-spacing: 6px; text-align: center; margin-bottom: 8px; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,255,255,0.4), transparent); margin: 24px 0 32px; }
+  label { font-size: 11px; color: #0ff; letter-spacing: 4px; display: block; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; }
+  input { width: 100%; background: rgba(0,255,255,0.03); border: 1px solid rgba(0,255,255,0.2); color: #fff; padding: 16px; font-family: 'Rajdhani'; font-size: 16px; letter-spacing: 2px; margin-bottom: 20px; outline: none; border-radius: 8px; transition: all 0.3s; font-weight: 600; }
+  input::placeholder { color: #333; }
+  input:focus { border-color: #0ff; background: rgba(0,255,255,0.06); box-shadow: 0 0 20px rgba(0,255,255,0.2); }
+  button.main-btn { width: 100%; background: linear-gradient(90deg, #0ff, #0af); color: #000; border: none; padding: 16px; font-family: 'Orbitron'; font-size: 13px; letter-spacing: 4px; cursor: pointer; font-weight: 900; border-radius: 8px; transition: all 0.3s; box-shadow: 0 0 20px rgba(0,255,255,0.4); text-transform: uppercase; }
+  button.main-btn:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,255,255,0.7); }
+  button.main-btn:disabled { background: #222; color: #555; cursor: not-allowed; box-shadow: none; }
+  .code { margin-top: 24px; padding: 22px; border: 1px dashed rgba(0,255,255,0.3); border-radius: 8px; font-family: 'Orbitron'; font-size: 24px; letter-spacing: 8px; text-align: center; color: #0ff; word-break: break-all; min-height: 28px; text-shadow: 0 0 20px #0ff; background: rgba(0,255,255,0.03); }
+  .hint { color: #555; font-size: 11px; text-align: center; margin-top: 16px; letter-spacing: 2px; min-height: 16px; }
+  .features { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 28px; }
+  .chip { font-size: 10px; letter-spacing: 2px; padding: 6px 12px; border: 1px solid rgba(0,255,255,0.2); border-radius: 20px; color: #0ff; background: rgba(0,255,255,0.03); font-weight: 600; text-transform: uppercase; }
+  .dev-wrap { margin-top: 32px; display: flex; justify-content: center; }
+  .dev-btn { position: relative; display: inline-block; padding: 14px 36px; font-family: 'Orbitron'; font-weight: 900; font-size: 13px; letter-spacing: 4px; text-decoration: none; color: #0ff; background: transparent; border: 2px solid #0ff; border-radius: 10px; text-shadow: 0 0 8px #0ff; box-shadow: 0 0 8px #0ff, 0 0 16px rgba(0,255,255,0.6), inset 0 0 8px rgba(0,255,255,0.2); transition: all 0.3s; overflow: hidden; animation: pulse 2.2s infinite; }
+  .dev-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,255,255,0.4), transparent); transition: left 0.6s; }
+  .dev-btn:hover::before { left: 100%; }
+  .dev-btn:hover { color: #000; background: #0ff; text-shadow: none; box-shadow: 0 0 16px #0ff, 0 0 32px #0ff, 0 0 64px rgba(0,255,255,0.8); transform: translateY(-2px); }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 8px #0ff, 0 0 16px rgba(0,255,255,0.6), inset 0 0 8px rgba(0,255,255,0.2); } 50% { box-shadow: 0 0 14px #0ff, 0 0 28px rgba(0,255,255,0.9), inset 0 0 12px rgba(0,255,255,0.4); } }
+  .footer { text-align: center; margin-top: 24px; font-size: 10px; letter-spacing: 4px; color: #333; font-family: 'Cinzel'; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>BAZZ MD BOT</h1>
+  <p class="sub">LUXURY PAIRING PANEL</p>
+  <div class="divider"></div>
+  <label>WhatsApp Number</label>
+  <input id="num" placeholder="923XXXXXXXXX" inputmode="numeric" autocomplete="off" />
+  <button class="main-btn" id="btn" onclick="pair()">Generate Pairing Code</button>
+  <div class="code" id="out"></div>
+  <p class="hint" id="hint"></p>
+  <div class="features">
+    <span class="chip">VV HD</span>
+    <span class="chip">AI Jaan</span>
+    <span class="chip">TikTok HD</span>
+    <span class="chip">PakSim</span>
+    <span class="chip">OSINT</span>
+    <span class="chip">Downloader</span>
+  </div>
+  <div class="dev-wrap">
+    <a class="dev-btn" href="https://t.me/BazzHacker963" target="_blank" rel="noopener">@BazzHacker963</a>
+  </div>
+  <p class="footer">POWERED BY BAZZ SYSTEM</p>
+</div>
+<script>
+async function pair() {
+  const num = document.getElementById('num').value.trim();
+  const btn = document.getElementById('btn');
+  const out = document.getElementById('out');
+  const hint = document.getElementById('hint');
+  if (!/^\d{10,15}$/.test(num)) { out.textContent = ''; hint.textContent = 'Number galat hai.'; return; }
+  btn.disabled = true;
+  out.textContent = '...';
+  hint.textContent = 'Code ban raha hai, 10 sec lag sakte hain.';
+  try {
+    const r = await fetch('/pair', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ number: num }) });
+    const d = await r.json();
+    if (d.code) { out.textContent = d.code; hint.textContent = 'WhatsApp → Linked Devices → Link with phone number'; }
+    else { out.textContent = ''; hint.textContent = d.error || d.message || 'Fail.'; }
+  } catch (e) { out.textContent = ''; hint.textContent = 'Server error.'; }
+  finally { btn.disabled = false; }
+}
+</script>
+</body>
+</html>
