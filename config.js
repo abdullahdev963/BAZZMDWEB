@@ -1,7 +1,7 @@
 // language: JavaScript, file: config.js
 export default {
-  botName: 'BAZZ MD BOT',
-  owner: '923XXXXXXXXX', // apna number yahan
+  botName: 'BAZZ WA MD BOT',
+  owner: '447869794924', // apna number yahan
   ownerName: 'BAZZ',
   prefix: '.',
   menuImage: './assets/menu.jpg',
