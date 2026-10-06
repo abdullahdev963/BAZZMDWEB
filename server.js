@@ -9,12 +9,19 @@ import P from 'pino';
 import { Boom } from '@hapi/boom';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import config from './config.js';
 import { handleMessage, handleCall } from './handler.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const app = express();
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const sessions = new Map();
 
